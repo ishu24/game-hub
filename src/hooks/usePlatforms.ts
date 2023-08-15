@@ -1,5 +1,5 @@
+import platforms from "../data/platforms";
 import APIClient from "../services/api-client";
-import { FetchResponse } from "../services/api-client";
 import { useQuery } from "@tanstack/react-query";
 
 const apiClient = new APIClient<Platform>("/platforms/lists/parents");
@@ -15,7 +15,8 @@ const usePlatforms = () =>
     queryKey: ["platforms"],
     queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000, //24h
-    //initialData: { count: platforms.length, results: platforms },
+    initialData: platforms,
+    //initialData: { count: platforms.length, results: platforms, next: null },   need to make genres.ts file which contain all static data
   });
 
 export default usePlatforms;
