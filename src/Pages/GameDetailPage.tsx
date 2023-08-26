@@ -1,11 +1,9 @@
+import { Heading, Spinner } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
-import useGame from "../hooks/useGame";
-import { Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import ExpandableText from "../components/ExpandableText";
-import DefinitionItem from "../components/DefinitionItem";
-import platforms from "../data/platforms";
-import CriticScore from "../components/CriticScore";
 import GameAttribute from "../components/GameAttribute";
+import useGame from "../hooks/useGame";
+import GameTrailer from "../components/GameTrailer";
 
 const GameDetailPage = () => {
   const { slug } = useParams();
@@ -19,6 +17,7 @@ const GameDetailPage = () => {
       <Heading>{game.name}</Heading>
       <ExpandableText>{game.description_raw}</ExpandableText>
       <GameAttribute game={game}></GameAttribute>
+      <GameTrailer gameId={game.id}></GameTrailer>
     </>
   );
 };
